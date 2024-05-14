@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="poppins.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+
+</head>
+
+<body>
+    <main class="py-5 md-px-20 px-5 h-screen">
+        <div class="grid grid-cols-12 grid-rows-1 gap-5 w-full h-full">
+            <div
+                class=" md:col-span-8 col-span-12 flex flex-col md:justify-between md:gap-5 gap-5 rounded-[1rem] md:p-5">
+
+                <div class="flex flex-col md:gap-5 gap-3">
+                    <!-- logo -->
+                    <div class="flex flex-row items-center justify-start gap-1">
+                        <div>
+                            <img src="/Frame.svg" width="25" height="25" alt="logo">
+                        </div>
+                        <h2 class="poppins-regular text-2xl text-neutral-700 font-bold">LOGO</h2>
+                    </div>
+                    <!-- steps -->
+                    <div class="flex flex-col gap-2 mt-3">
+                        <div class="flex flex-row gap-2">
+                            <span class="w-[50px] h-[7px] rounded-full bg-black"></span>
+                            <span class="w-[50px] h-[7px] rounded-full bg-neutral-500/30"></span>
+                            <span class="w-[50px] h-[7px] rounded-full bg-neutral-500/30"></span>
+                            <span class="w-[50px] h-[7px] rounded-full bg-neutral-500/30"></span>
+                            <span class="w-[50px] h-[7px] rounded-full bg-neutral-500/30"></span>
+                        </div>
+                        <span class="poppins-regular font-medium">1 Of 5</span>
+                    </div>
+                    <!-- Question -->
+                    <div class="relative overflow-hidden">
+                        <div class="flex gap-3 py-2">
+                            <h1
+                                class="poppins-semibold font-semibold lg:text-5xl text-3xl text-neutral-700 md:leading-normal w-fit flex gap-2 flex-wrap items-start">
+                                <span>Schedule</span>
+                                <span>A</span> <span>Google</span> <span>Meet</span> <span>Call</span> <img
+                                    src="/meet.svg" class="md:w-[60px] w-[35px]" alt="google meet icon">
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- ans -->
+                <div class=" select-none bg-neutral-200/70 md:p-3 p-2 md:h-full h-[350px] rounded-[2rem]">
+                    <div class="grid grid-cols-12 h-full justify-between md:gap-3 gap-2 items-center h-full">
+                        <!-- Calender -->
+                        <div class="md:col-span-6 col-span-12 md:flex flex-col justify-between  hidden bg-white h-full rounded-[1.5rem] ">
+                            <div class=" flex items-start justify-between md:p-5 p-3">
+                                <div>
+                                    <h2 class="text-3xl poppins-regular leading-tight" id="confirmWeekName">Friday</h2>
+                                    <Span class="poppins-regular leading-tight text-neutral-600" id="confirmDate">May 12</Span>
+                                </div>
+                                <div><i data-lucide="calendar" class="text-neutral-600 m-2"></i></div>
+                            </div>
+
+                            <div class="md:p-5 p-3">
+                                <div class="swiper calender">
+                                    <div class="swiper-wrapper" id="calender">
+                                      
+                                    </div>
+                                    <input type="text" hidden id="calenderDate">
+                                </div>
+                            </div>
+                            <div class="relative flex gap-10 md:mt-5 mb-7 items-center justify-end mr-3 ">
+                                <div class="swiper-button-prev relative p-5 rounded-full hover:bg-neutral-200"></div>
+                                <div class="swiper-button-next relative p-5 rounded-full hover:bg-neutral-200"></div>
+                            </div>
+                        </div>
+                        <!-- time selection -->
+                        <div class="md:col-span-6 col-span-12   h-full rounded-[1.5rem]  bg-white">
+                            <div class="grid grid-cols-2 gap-3 md:p-5 p-3 relative overflow-y-scroll overflow-x-hidden hide-scroller md:h-[350px] h-[330px]" id="slotWrapper">
+                                
+                            </div>
+                            <input type="text" id="inputSlot" hidden value="">
+                        </div>
+                    </div>
+                </div>
+                <!-- button  -->
+                <div class="flex flex-row gap-3 items-center md:justify-start justify-between">
+                    <button
+                        class="py-3 poppins-regular px-8 text-xl bg-neutral-900/10 text-neutral-600 md:block hidden  rounded-full">Back</button>
+                    <button
+                        class="p-3 poppins-regular  bg-neutral-900/10 text-neutral-600 md:hidden block  rounded-full"><i
+                            data-lucide="chevron-left"></i></button>
+                    <button
+                        class="py-3 poppins-regular px-8 text-xl text-white bg-neutral-900 rounded-full">Next</button>
+                </div>
+            </div>
+            <div class="col-span-4 col-start-9 bg-red-200 rounded-[2rem] md:block hidden"></div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+    <script>
+        var swiper = new Swiper(".calender", {
+            slidesPerView: 4,
+            spaceBetween: 10,
+            // centeredSlides: true,
+            // loop: true,
+            grabCursor: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+    
+        768: {
+          slidesPerView: 5,
+          spaceBetween: 15,
+        },
+    
+      },
+        });
+    </script>
+    <script src="/script.js"></script>
+</body>
+
+</html>
