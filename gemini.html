@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    focus input feild on enter key press     
+     
+    <input type="text" id="inputField">
+
+    <script>
+        const inputField = document.getElementById("inputField");
+
+        inputField.addEventListener("keydown", (event) => {
+            console.log(event.key);
+            if (event.key === "Enter") {
+                inputField.focus();
+            }
+        });
+    </script>
+
+
+
+    
+</body>
+</html>

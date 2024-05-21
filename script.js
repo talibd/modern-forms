@@ -1,4 +1,8 @@
 
+// lucid icon 
+
+lucide.createIcons();
+
 // =======================================================
                 // Calender feild 
 // =========================================================
@@ -9,12 +13,8 @@ function getDatesForNextMonth() {
   // Create a new date object for the first day of next month
   const nextMonth = new Date(today.getFullYear(), today.getMonth() + 1, 1);
 
-  // Get the last day of next month
-  const lastDay = new Date(
-    nextMonth.getFullYear(),
-    nextMonth.getMonth() + 1,
-    0
-  ); // 0 is the last day of the previous month
+  // Get the last day of next month (technically previous month's last day)
+  const lastDay = new Date(nextMonth.getFullYear(), nextMonth.getMonth() + 1, 0);
 
   // Month names array
   const months = [
@@ -68,11 +68,27 @@ function getDatesForNextMonth() {
     });
   }
 
+  // Create a new variable (separate from loop's date) for next month's date
+  let nextMonthDate = new Date(today.getFullYear(), today.getMonth() + 1, 1);
+
+  const nextMonthDayOfWeekIndex = nextMonthDate.getDay();
+  const nextMonthDayOfWeek = weekdays[nextMonthDayOfWeekIndex][0];
+  const nextMonthShortWeekDay = weekdays[nextMonthDayOfWeekIndex][1];
+  const nextMonthFormattedDate = formatDate(nextMonthDate);
+  dates.push({
+    day: nextMonthDate.getDate(),
+    month: months[nextMonthDate.getMonth()],
+    week: nextMonthDayOfWeek,
+    shortWeekDay: nextMonthShortWeekDay,
+    formattedDate: nextMonthFormattedDate,
+  });
+
   return dates;
 }
 
 const datesArray = getDatesForNextMonth();
 console.log(datesArray);
+
 
 const calanderWrapper = document.getElementById("calender");
 
@@ -125,49 +141,128 @@ dateSelector.forEach((i, index) => {
 // =========================================================
 
 const Slots = [
-  "10:30 AM",
-  "11:00 AM",
-  "11:30 AM",
-  "12:00 PM",
-  "12:30 PM",
-  "01:00 PM",
-  "01:30 PM",
-  "02:00 PM",
-  "02:30 PM",
-  "03:00 PM",
-  "03:30 PM",
-  "04:00 PM",
-  "04:30 PM",
-  "05:00 PM",
-  "05:30 PM",
-  "06:00 PM",
-  "06:30 PM",
-  "07:00 PM",
-  "07:30 PM"
+  { time: "10:30 AM", time_name: "Morning" },
+  { time: "11:00 AM", time_name: "Morning" },
+  { time: "11:30 AM", time_name: "Morning" },
+  { time: "12:00 PM", time_name: "Afternoon" },
+  { time: "12:30 PM", time_name: "Afternoon" },
+  { time: "01:00 PM", time_name: "Afternoon" },
+  { time: "01:30 PM", time_name: "Afternoon" },
+  { time: "02:00 PM", time_name: "Afternoon" },
+  { time: "02:30 PM", time_name: "Afternoon" },
+  { time: "03:00 PM", time_name: "Afternoon" },
+  { time: "03:30 PM", time_name: "Afternoon" },
+  { time: "04:00 PM", time_name: "Afternoon" },
+  { time: "04:30 PM", time_name: "Afternoon" },
+  { time: "05:00 PM", time_name: "Evening" },
+  { time: "05:30 PM", time_name: "Evening" },
+  { time: "06:00 PM", time_name: "Evening" },
+  { time: "06:30 PM", time_name: "Evening" },
+  { time: "07:00 PM", time_name: "Evening" },
+  { time: "07:30 PM", time_name: "Evening" },
 ];
+
+console.log(Slots);
+
 
 const slotWrapper = document.getElementById('slotWrapper');
 
 const slot = Slots.map((i)=>{
-  return `<div class="bg-neutral-200/70 cursor-pointer poppins-regular p-3 text-xl text-neutral-500 text-center rounded-xl relative slotPicker">${i}</div>`
+  return `<div
+  class="bg-neutral-200/70 cursor-pointer poppins-regular p-5 h-fit flex gap-3 text-xl text-neutral-500 rounded-xl relative slotPicker">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="circle" class="lucide lucide-circle"><circle cx="12" cy="12" r="10"></circle></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check" class="lucide lucide-check bg-neutral-900 hidden rounded-full text-white p-1"><path d="M20 6 9 17l-5-5"></path></svg>
+  <div class="flex flex-row items-end gap-1">
+      <span class="text-xl leading-tight">${i.time},</span>
+      <span class="text-sm">${i.time_name}</span>
+  </div>
+</div>`
 }).join('');
 
 slotWrapper.innerHTML = slot;
 
 let slotPicker = document.querySelectorAll('.slotPicker');
 let inputSlot = document.getElementById('inputSlot');
+let checkIcon = document.querySelectorAll('.lucide-check');
+let circleIcon = document.querySelectorAll('.lucide-circle');
 
 let checkSlte;
+let check;
+let circle;
 
 slotPicker.forEach((i,index)=>{
   i.addEventListener('click',()=>{
     if(checkSlte){
       checkSlte.style.background = '';
     }
-
-    inputSlot.value = Slots[index];
+    inputSlot.value = Slots[index].time;
     i.style.background = '#fdd587';
+    if(check){
+      check.style.display = 'none';
+    }
+    checkIcon[index].style.display = 'block';
+    check = checkIcon[index];
+    if(circle){
+      circle.style.display = 'block';
+    }
+    circleIcon[index].style.display = 'none';
+    circle = circleIcon[index]
     checkSlte = i;
   })
 })
 
+// services 
+
+const servicesArray = [
+  { service: "video editing", icon: "film" },
+  { service: "ade creation" , icon: "file-spreadsheet" },
+  { service: "consultation" , icon: "users"},
+  { service: "video marketing" , icon: "file-video"},
+  { service: "video production" , icon: "clapperboard"},
+  { service: "designing" , icon: "brush"},
+  { service: "youtube management" , icon: "youtube"},
+  { service: "profile branding" , icon: "circle-user"},
+  { service: "ideation & storyboarding" , icon: "lightbulb"},
+  { service: "scripting" , icon: "scroll-text"},
+  { service: "voice over" , icon: "audio-lines"},
+  { service: "animation" , icon: "activity"},
+  { service: "product promo's" , icon: "package-search"},
+];
+
+
+const serviceMap = servicesArray.map((i)=>{
+  return `<div class="swiper-slide rounded-2xl md:h-full h-fit cursor-pointer checkBoxContainer">
+  <label for="${i.service}">
+  <div class="flex flex-col md:h-full h-fit justify-between md:p-3 p-5">
+      <div class="flex items-center relative top-2 right-2 justify-end">
+          <input type="checkbox" name="" class="accent-black scale-150 inputService" id="${i.service}" value="${i.service}" >
+      </div>
+      <div class="flex flex-col md:gap-5 gap-3 md:items-center items-start relatable justify-center">
+          <div class="p-3 rounded-xl flex items-center justify-center bg-neutral-200/70 w-[50px] h-[50px] text-neutral-700">
+          <img src="assests/${i.icon}.svg" >
+          </div>
+          <span class="poppins-regular leading-tight capitalize">${i.service}</span>
+      </div>
+      <div></div>
+  </div>
+  </label>
+</div>`
+}).join('');
+
+document.querySelector('.serviceWrapper').innerHTML = serviceMap;
+
+var serviceCheckBox = document.querySelectorAll('.inputService');
+var checkBoxContainer = document.querySelectorAll('.checkBoxContainer');
+
+var validateChecks = null;
+
+
+checkBoxContainer.forEach((check, index)=>{
+  check.addEventListener('click',()=>{
+    if(serviceCheckBox[index].checked){
+      check.classList.add('innerborder');
+    }else{
+      check.classList.remove('innerborder');
+    }
+  });
+});

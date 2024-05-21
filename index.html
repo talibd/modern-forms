@@ -1,31 +1,30 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="poppins.css">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="poppins.css" />
+    <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-
 </head>
 
 <body>
-    <main class="py-5 md-px-20 px-5 h-screen">
+    <main class="py-5 xl:px-20 px-5 h-screen">
         <div class="grid grid-cols-12 grid-rows-1 gap-5 w-full h-full">
             <div
-                class=" md:col-span-8 col-span-12 flex flex-col md:justify-between md:gap-5 gap-5 rounded-[1rem] md:p-5">
-
+                class="md:col-span-8 col-span-12 flex flex-col md:justify-between md:gap-5 gap-5 rounded-[1rem] md:p-5">
                 <div class="flex flex-col md:gap-5 gap-3">
                     <!-- logo -->
                     <div class="flex flex-row items-center justify-start gap-1">
                         <div>
-                            <img src="/Frame.svg" width="25" height="25" alt="logo">
+                            <img src="/Frame.svg" width="25" height="25" alt="logo" />
                         </div>
-                        <h2 class="poppins-regular text-2xl text-neutral-700 font-bold">LOGO</h2>
+                        <h2 class="poppins-regular text-2xl text-neutral-700 font-bold">
+                            LOGO
+                        </h2>
                     </div>
                     <!-- steps -->
                     <div class="flex flex-col gap-2 mt-3">
@@ -40,91 +39,283 @@
                     </div>
                     <!-- Question -->
                     <div class="relative overflow-hidden">
-                        <div class="flex gap-3 py-2">
+                        <div class="flex flex-col gap-3 py-2">
                             <h1
-                                class="poppins-semibold font-semibold lg:text-5xl text-3xl text-neutral-700 md:leading-normal w-fit flex gap-2 flex-wrap items-start">
-                                <span>Schedule</span>
-                                <span>A</span> <span>Google</span> <span>Meet</span> <span>Call</span> <img
-                                    src="/meet.svg" class="md:w-[60px] w-[35px]" alt="google meet icon">
+                                class="poppins-regular lg:text-4xl md:text-4xl text-3xl text-neutral-700 w-fit flex gap-3 flex-wrap items-end">
+                                Persnal Information.
                             </h1>
+                            <small class="text-sm poppins-regular">(all fields are required *)</small>
                         </div>
                     </div>
                 </div>
                 <!-- ans -->
-                <div class=" select-none bg-neutral-200/70 md:p-3 p-2 md:h-full h-[350px] rounded-[2rem]">
-                    <div class="grid grid-cols-12 h-full justify-between md:gap-3 gap-2 items-center h-full">
+                <div
+                    class="select-none formFeilds bg-neutral-200/70 md:p-3w-fit p-2 md:h-full h-[350px] rounded-[2rem]">
+                    <!-- google meet -->
+                    <div class="grid hidden grid-cols-12 h-full justify-between md:gap-3 gap-2 items-center h-full">
                         <!-- Calender -->
-                        <div class="md:col-span-6 col-span-12 md:flex flex-col justify-between  hidden bg-white h-full rounded-[1.5rem] ">
-                            <div class=" flex items-start justify-between md:p-5 p-3">
+                        <div
+                            class="md:col-span-12 col-span-12 flex flex-col justify-between bg-white h-full rounded-[1.5rem]">
+                            <div class="flex items-start justify-between md:p-5 p-3">
                                 <div>
-                                    <h2 class="text-3xl poppins-regular leading-tight" id="confirmWeekName">Friday</h2>
-                                    <Span class="poppins-regular leading-tight text-neutral-600" id="confirmDate">May 12</Span>
+                                    <h2 class="text-3xl poppins-regular leading-tight" id="confirmWeekName">
+                                        Friday
+                                    </h2>
+                                    <span class="poppins-regular leading-tight text-neutral-600" id="confirmDate">May
+                                        12</span>
                                 </div>
-                                <div><i data-lucide="calendar" class="text-neutral-600 m-2"></i></div>
+                                <div>
+                                    <i data-lucide="calendar" class="text-neutral-600 m-2"></i>
+                                </div>
                             </div>
 
                             <div class="md:p-5 p-3">
                                 <div class="swiper calender">
-                                    <div class="swiper-wrapper" id="calender">
-                                      
-                                    </div>
-                                    <input type="text" hidden id="calenderDate">
+                                    <div class="swiper-wrapper" id="calender"></div>
+                                    <input type="text" hidden id="calenderDate" />
                                 </div>
                             </div>
-                            <div class="relative flex gap-10 md:mt-5 mb-7 items-center justify-end mr-3 ">
+                            <div class="relative flex gap-10 md:mt-5 mb-7 items-center justify-end mr-3">
                                 <div class="swiper-button-prev relative p-5 rounded-full hover:bg-neutral-200"></div>
                                 <div class="swiper-button-next relative p-5 rounded-full hover:bg-neutral-200"></div>
                             </div>
                         </div>
                         <!-- time selection -->
-                        <div class="md:col-span-6 col-span-12   h-full rounded-[1.5rem]  bg-white">
-                            <div class="grid grid-cols-2 gap-3 md:p-5 p-3 relative overflow-y-scroll overflow-x-hidden hide-scroller md:h-[350px] h-[330px]" id="slotWrapper">
-                                
+                        <div class="md:col-span-12 col-span-12 hidden h-full rounded-[1.5rem] bg-white">
+                            <div class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3 md:p-5 p-3 relative overflow-y-scroll overflow-x-hidden hide-scroller md:h-[350px] h-[330px]"
+                                id="slotWrapper">
+                                <div
+                                    class="bg-neutral-200/70 cursor-pointer poppins-regular p-5 h-fit flex gap-3 text-xl text-neutral-500 rounded-xl relative slotPicker">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" data-lucide="circle" class="lucide lucide-circle">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" data-lucide="check"
+                                        class="lucide lucide-check bg-neutral-500 hidden rounded-full text-white p-1">
+                                        <path d="M20 6 9 17l-5-5"></path>
+                                    </svg>
+                                    <div class="flex flex-row items-end gap-1">
+                                        <span class="text-xl leading-tight">10:00 AM,</span>
+                                        <span class="text-sm">Morning</span>
+                                    </div>
+                                </div>
                             </div>
-                            <input type="text" id="inputSlot" hidden value="">
+                            <input type="text" id="inputSlot" hidden value="" />
+                        </div>
+                    </div>
+
+                    <!-- services -->
+                    <div class="hidden flex-col relative items-center justify-center py-3 md:px-3 px-3 h-full">
+                        <div class="swiper serviceSwiper">
+                            <div class="swiper-wrapper serviceWrapper">
+                                <div class="swiper-slide rounded-2xl">Slide 2</div>
+                                <div class="swiper-slide rounded-2xl">Slide 3</div>
+                                <div class="swiper-slide rounded-2xl">Slide 4</div>
+                                <div class="swiper-slide rounded-2xl">Slide 5</div>
+                                <div class="swiper-slide rounded-2xl">Slide 6</div>
+                                <div class="swiper-slide rounded-2xl">Slide 7</div>
+                                <div class="swiper-slide rounded-2xl">Slide 8</div>
+                                <div class="swiper-slide rounded-2xl">Slide 9</div>
+                            </div>
+                        </div>
+                        <div
+                            class="flex md:items-center items-end md:top-2 top-4 md:h-fit h-full justify-center md:relative absolute">
+                            <div class="pagi md:block flex flex-row gap-1"></div>
+                        </div>
+                        <div
+                            class="absolute pointer-events-none z-10 w-full md:flex hidden items-center justify-between gap-10 md:mt-5 mb-7">
+                            <div
+                                class="service-button-prev relative p-5 pointer-events-auto md:-left-10 -left-4 scale-[0.5] rounded-full bg-neutral-900">
+                                <i data-lucide="chevron-left" class="text-white"></i>
+                            </div>
+                            <div
+                                class="service-button-next relative p-5 pointer-events-auto md:-right-10 -right-4 scale-[0.5] rounded-full bg-neutral-900">
+                                <i data-lucide="chevron-right" class="text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Persnal Details -->
+                    <div class="grid md:grid-cols-2 grid-cols-1 grid-rows-1 gap-3 overflow-hidden h-full rounded-[1.5rem]">
+                        <div class="bg-white col-span-1 md:p-5 p-3 flex flex-col gap-5 justify-between rounded-[1.5rem]">
+                            <h2 class="px-3 poppins-regular text-xl text-neutral-700 font-medium">Let's Start with</h2>
+                            <!-- name -->
+                            <label for="fullName" class="flex flex-row gap-3 p-3 bg-neutral-200/50 rounded-2xl relative">
+                                <div class="p-2  rounded-md">
+                                    <i data-lucide="user"></i>
+                                </div>
+                                <div class="flex flex-col justify-center w-full h-full">
+                                    <span class="text-sm poppins-regular text-neutral-500">Full Name</span>
+                                    <input type="text" name="name" id="fullName" class="flex bg-transparent outline-none w-full text-md poppins-regular" placeholder="enter here..." />
+                                </div>
+                            </label>
+                            <!-- Phone -->
+                            <label for="phone" class="flex flex-row gap-3 p-3 bg-neutral-200/50 rounded-2xl relative">
+                                <div class="p-2  rounded-md">
+                                    <i data-lucide="phone"></i>
+                                </div>
+                                <div class="flex flex-col justify-center w-full h-full">
+                                    <span class="text-sm poppins-regular text-neutral-500">Phone.</span>
+                                    <input type="tel" name="name" id="phone" class="flex bg-transparent outline-none w-full text-md poppins-regular" placeholder="enter here..." />
+                                </div>
+                            </label>
+                            <!-- email -->
+                            <label for="email" class="flex flex-row gap-3 p-3 bg-neutral-200/50 rounded-2xl relative">
+                                <div class="p-2  rounded-md">
+                                    <i data-lucide="mail"></i>
+                                </div>
+                                <div class="flex flex-col justify-center w-full h-full">
+                                    <span class="text-sm poppins-regular text-neutral-500">Email</span>
+                                    <input type="email" name="name" id="email" class="flex bg-transparent outline-none w-full text-md poppins-regular" placeholder="enter here..." />
+                                </div>
+                            </label>
+                            
+                        </div>
+
+                        <!-- about your company -->
+
+                        <div class="bg-white col-span-1 md:p-5 p-3 flex flex-col gap-5 justify-between rounded-[1.5rem]">
+                            <h2 class="px-3 poppins-regular text-xl text-neutral-700 font-medium">About your brand</h2>
+                            <!-- Your brand name -->
+                            <label for="fullName" class="flex flex-row gap-3 p-3 bg-neutral-200/50 rounded-2xl relative">
+                                <div class="p-2  rounded-md">
+                                    <i data-lucide="earth"></i>
+                                </div>
+                                <div class="flex flex-col justify-center w-full h-full">
+                                    <span class="text-sm poppins-regular text-neutral-500">Brand Name</span>
+                                    <input type="text" name="name" id="fullName" class="flex bg-transparent outline-none w-full text-md poppins-regular" placeholder="enter here..." />
+                                </div>
+                            </label>
+                            <!-- Phone -->
+                            <label for="phone" class="flex flex-row gap-3 p-3 bg-neutral-200/50 rounded-2xl relative">
+                                <div class="p-2  rounded-md">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                </div>
+                                <div class="flex flex-col justify-center w-full h-full">
+                                    <span class="text-sm poppins-regular text-neutral-500">Phone.</span>
+                                    <input type="tel" name="name" id="phone" class="flex bg-transparent outline-none w-full text-md poppins-regular" placeholder="enter here..." />
+                                </div>
+                            </label>
+                            <!-- email -->
+                            <label for="email" class="flex flex-row gap-3 p-3 bg-neutral-200/50 rounded-2xl relative">
+                                <div class="p-2  rounded-md">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                </div>
+                                <div class="flex flex-col justify-center w-full h-full">
+                                    <span class="text-sm poppins-regular text-neutral-500">Email</span>
+                                    <input type="email" name="name" id="email" class="flex bg-transparent outline-none w-full text-md poppins-regular" placeholder="enter here..." />
+                                </div>
+                            </label>
+                            
                         </div>
                     </div>
                 </div>
                 <!-- button  -->
                 <div class="flex flex-row gap-3 items-center md:justify-start justify-between">
                     <button
-                        class="py-3 poppins-regular px-8 text-xl bg-neutral-900/10 text-neutral-600 md:block hidden  rounded-full">Back</button>
+                        class="py-3 poppins-regular px-8 text-xl bg-neutral-900/10 text-neutral-600 md:block hidden rounded-full">
+                        <span class="md:block hidden">Back</span>
+                        <i data-lucide="chevron-left" class="md:hidden block p-3"></i>
+                    </button>
+                    <button class="p-3 poppins-regular bg-neutral-900/10 text-neutral-600 md:hidden block rounded-full">
+                        <i data-lucide="chevron-left"></i>
+                    </button>
                     <button
-                        class="p-3 poppins-regular  bg-neutral-900/10 text-neutral-600 md:hidden block  rounded-full"><i
-                            data-lucide="chevron-left"></i></button>
-                    <button
-                        class="py-3 poppins-regular px-8 text-xl text-white bg-neutral-900 rounded-full">Next</button>
+                        class="py-3 poppins-regular px-8 text-xl text-white bg-neutral-900 rounded-full disabled:opacity-75 disabled:cursor-not-allowed"
+                        disabled>
+                        Next
+                    </button>
                 </div>
             </div>
-            <div class="col-span-4 col-start-9 bg-red-200 rounded-[2rem] md:block hidden"></div>
+            <div class="col-span-4 col-start-9 bg-red-200 rounded-[2rem] overflow-hidden md:block hidden">
+                <canvas id="canvas3d"></canvas>
+            </div>
         </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- swipers -->
     <script>
-        lucide.createIcons();
-    </script>
-    <script>
-        var swiper = new Swiper(".calender", {
+        var meet = new Swiper(".calender", {
             slidesPerView: 4,
             spaceBetween: 10,
             // centeredSlides: true,
             // loop: true,
+            // freeMode:true,
             grabCursor: true,
             navigation: {
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",
             },
             breakpoints: {
-    
-        768: {
-          slidesPerView: 5,
-          spaceBetween: 15,
-        },
-    
-      },
+                768: {
+                    slidesPerView: 6,
+                    spaceBetween: 15,
+                },
+                1280: {
+                    slidesPerView: 8,
+                    spaceBetween: 10,
+                },
+                1536: {
+                    slidesPerView: 10,
+                    spaceBetween: 10,
+                },
+            },
         });
+        var services = new Swiper(".serviceSwiper", {
+            direction: "vertical",
+            slidesPerView: "auto",
+            spaceBetween: 10,
+            // freeMode: true,
+            mousewheel: true,
+            // centeredSlides: true,
+            // loop: true,
+            grabCursor: true,
+            navigation: {
+                nextEl: ".service-button-next",
+                prevEl: ".service-button-prev",
+            },
+            pagination: {
+                el: ".pagi",
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 15,
+                    direction: "horizontal",
+                },
+                1280: {
+                    slidesPerView: 4,
+                    spaceBetween: 15,
+                    direction: "horizontal",
+                },
+                1536: {
+                    slidesPerView: 4,
+                    spaceBetween: 15,
+                    direction: "horizontal",
+                },
+            },
+        });
+    </script>
+    <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "@splinetool/runtime": "https://unpkg.com/@splinetool/runtime@0.9.510/build/runtime.js"
+        }
+      }
+    </script>
+    <script type="module">
+        import { Application } from "@splinetool/runtime";
+
+        const canvas = document.getElementById("canvas3d");
+        const app = new Application(canvas);
+        app.load("https://prod.spline.design/F0plyuUGtImDQhzn/scene.splinecode");
     </script>
     <script src="/script.js"></script>
 </body>

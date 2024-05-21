@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload Form</title>
+</head>
+<body>
+    <h1>Image Upload</h1>
+    <form id="uploadForm" onsubmit="upload(event)">
+        <label for="file1">Select image:</label>
+        <input type="file" id="file1" name="file1" accept="image/*" required>
+        <br>
+        <button type="submit">Upload</button>
+    </form>
+<script src="https://unpkg.com/imagekit-javascript@1.3.0/dist/imagekit.min.js"></script>
+    <script>
+        // Replace with your actual ImageKit public key
+        const publicKey = "public_sH4G6YEBaBA5/+lI1o/foVexPYI=";
+        const urlEndpoint = "https://ik.imagekit.io/talib/"; // Replace with your ImageKit ID
+
+        function upload(event) {
+            event.preventDefault();
+
+            const file = document.getElementById("file1").files[0];
+            const fileName = "abc1.jpg"; 
+            const tags = ["tag1"]; 
+
+            const imagekit = new ImageKit({
+                publicKey: publicKey,
+                urlEndpoint: urlEndpoint,
+                authenticationEndpoint:"http://127.0.0.1:5500/auth",
+            });
+
+            imagekit.upload({
+                file: file,
+                fileName: fileName,
+                tags: tags
+            }, function (err, result) {
+                if (err) {
+                    console.error(err);
+                    alert("Upload failed!");
+                    return;
+                }
+
+                const imageUrl = imagekit.url({
+                    src: result.url,
+                    transformation: [{ height: 300, width: 400 }]
+                });
+
+                console.log("Uploaded image URL:", imageUrl);
+                // You can display the uploaded image here using the imageUrl
+                // For example:
+                // document.getElementById("uploadedImage").src = imageUrl;
+            });
+        }
+    </script>
+</body>
+</html>
