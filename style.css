@@ -30,3 +30,7 @@
   .innerborder{
     box-shadow: inset 0px 0px 0px 2px #000;
   }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+}

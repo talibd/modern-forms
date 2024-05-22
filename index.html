@@ -42,7 +42,7 @@
                         <div class="flex flex-col gap-3 py-2">
                             <h1
                                 class="poppins-regular lg:text-4xl md:text-4xl text-3xl text-neutral-700 w-fit flex gap-3 flex-wrap items-end">
-                                Persnal Information.
+                                Personal Information.
                             </h1>
                             <small class="text-sm poppins-regular">(all fields are required *)</small>
                         </div>
@@ -50,7 +50,7 @@
                 </div>
                 <!-- ans -->
                 <div
-                    class="select-none formFeilds bg-neutral-200/70 md:p-3w-fit p-2 md:h-full h-[350px] rounded-[2rem]">
+                    class="select-none formFeilds bg-neutral-200/70 md:p-3w-fit p-2 md:h-full max-h-[350px] rounded-[2rem]">
                     <!-- google meet -->
                     <div class="grid hidden grid-cols-12 h-full justify-between md:gap-3 gap-2 items-center h-full">
                         <!-- Calender -->
@@ -139,8 +139,10 @@
                     </div>
 
                     <!-- Persnal Details -->
-                    <div class="grid md:grid-cols-2 grid-cols-1 grid-rows-1 gap-3 overflow-hidden h-full rounded-[1.5rem]">
-                        <div class="bg-white col-span-1 md:p-5 p-3 flex flex-col gap-5 justify-between rounded-[1.5rem]">
+                    <div class="md:grid md:grid-cols-2 flex flex-col relative md:overflow-y-hidden max-h-[350px] overflow-y-scroll no-scrollbar grid-cols-1 grid-rows-1 gap-3  h-full rounded-[1.5rem]">
+                        
+                        <!-- Lets start with you -->
+                        <div class="bg-white col-span-1 md:p-5 p-3 flex flex-col gap-4 justify-between relative md:overflow-y-scroll no-scrollbar md:min-h-full min-h-fit rounded-[1.5rem]">
                             <h2 class="px-3 poppins-regular text-xl text-neutral-700 font-medium">Let's Start with</h2>
                             <!-- name -->
                             <label for="fullName" class="flex flex-row gap-3 p-3 bg-neutral-200/50 rounded-2xl relative">
@@ -150,6 +152,16 @@
                                 <div class="flex flex-col justify-center w-full h-full">
                                     <span class="text-sm poppins-regular text-neutral-500">Full Name</span>
                                     <input type="text" name="name" id="fullName" class="flex bg-transparent outline-none w-full text-md poppins-regular" placeholder="enter here..." />
+                                </div>
+                            </label>
+                             <!-- Your brand name -->
+                             <label for="brandName" class="flex flex-row gap-3 p-3 bg-neutral-200/50 rounded-2xl relative">
+                                <div class="p-2  rounded-md">
+                                    <i data-lucide="earth"></i>
+                                </div>
+                                <div class="flex flex-col justify-center w-full h-full">
+                                    <span class="text-sm poppins-regular text-neutral-500">Brand Name</span>
+                                    <input type="text" name="name" id="brandName" class="flex bg-transparent outline-none w-full text-md poppins-regular" placeholder="enter here..." />
                                 </div>
                             </label>
                             <!-- Phone -->
@@ -172,46 +184,41 @@
                                     <input type="email" name="name" id="email" class="flex bg-transparent outline-none w-full text-md poppins-regular" placeholder="enter here..." />
                                 </div>
                             </label>
+                             <!-- website -->
+                             <label for="website" class="flex flex-row gap-3 p-3 bg-neutral-200/50 rounded-2xl relative">
+                                <div class="p-2  rounded-md">
+                                    <i data-lucide="globe"></i>
+                                </div>
+                                <div class="flex flex-col justify-center w-full h-full">
+                                    <span class="text-sm poppins-regular text-neutral-500">Website link</span>
+                                    <input type="email" name="name" id="website" class="flex bg-transparent outline-none w-full text-md poppins-regular" placeholder="enter here..." />
+                                </div>
+                            </label>
                             
                         </div>
 
-                        <!-- about your company -->
 
-                        <div class="bg-white col-span-1 md:p-5 p-3 flex flex-col gap-5 justify-between rounded-[1.5rem]">
-                            <h2 class="px-3 poppins-regular text-xl text-neutral-700 font-medium">About your brand</h2>
-                            <!-- Your brand name -->
-                            <label for="fullName" class="flex flex-row gap-3 p-3 bg-neutral-200/50 rounded-2xl relative">
-                                <div class="p-2  rounded-md">
-                                    <i data-lucide="earth"></i>
+                        <!-- logo -->
+                        <div class="bg-white col-span-1 md:p-5 p-3 flex flex-col relative gap-3 justify-center items-center w-full rounded-[1.5rem]">
+                            <h2 class="poppins-regular text-neutral-700 font-medium w-full">Your brand logo</h2>
+                            
+                            <label for="logo" class="flex cursor-pointer flex-col overflow-hidden  gap-3 p-3 w-full h-full items-center justify-center bg-neutral-200/10 rounded-2xl relative border-dashed min-h-[200px] border-2 border-neutral-500">
+                                <div class="absolute pointer-events-none  w-full h-full hidden flex-col items-center justify-center bg-red-500">
+                                    <img src="/mnk.svg" class="invert w-[calc(100%-100px)] h-[calc(100%-100px)] object-contain" alt="">
                                 </div>
-                                <div class="flex flex-col justify-center w-full h-full">
-                                    <span class="text-sm poppins-regular text-neutral-500">Brand Name</span>
-                                    <input type="text" name="name" id="fullName" class="flex bg-transparent outline-none w-full text-md poppins-regular" placeholder="enter here..." />
+                                <div class="p-3 bg-neutral-200 flex flex-col items-center justify-center  rounded-md">
+                                    <i data-lucide="upload"></i>
                                 </div>
-                            </label>
-                            <!-- Phone -->
-                            <label for="phone" class="flex flex-row gap-3 p-3 bg-neutral-200/50 rounded-2xl relative">
-                                <div class="p-2  rounded-md">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                                </div>
-                                <div class="flex flex-col justify-center w-full h-full">
-                                    <span class="text-sm poppins-regular text-neutral-500">Phone.</span>
-                                    <input type="tel" name="name" id="phone" class="flex bg-transparent outline-none w-full text-md poppins-regular" placeholder="enter here..." />
+                                <span class="poppins-regular">Click here to upload your logo</span>
+                                <div class="flex hidden flex-col justify-center w-full h-full">
+                                    <input type="file"  name="name" id="logo" class="flex scale-75 relative  bg-transparent outline-none w-full text-md poppins-regular" placeholder="enter here..." />
                                 </div>
                             </label>
-                            <!-- email -->
-                            <label for="email" class="flex flex-row gap-3 p-3 bg-neutral-200/50 rounded-2xl relative">
-                                <div class="p-2  rounded-md">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                                </div>
-                                <div class="flex flex-col justify-center w-full h-full">
-                                    <span class="text-sm poppins-regular text-neutral-500">Email</span>
-                                    <input type="email" name="name" id="email" class="flex bg-transparent outline-none w-full text-md poppins-regular" placeholder="enter here..." />
-                                </div>
-                            </label>
+                           
                             
                         </div>
                     </div>
+
                 </div>
                 <!-- button  -->
                 <div class="flex flex-row gap-3 items-center md:justify-start justify-between">
@@ -230,8 +237,10 @@
                     </button>
                 </div>
             </div>
-            <div class="col-span-4 col-start-9 bg-red-200 rounded-[2rem] overflow-hidden md:block hidden">
-                <canvas id="canvas3d"></canvas>
+            <div class="col-span-4 col-start-9 bg-red-200 rounded-[2rem] overflow-hidden relative md:flex items-center justify-center hidden">
+                <!-- <canvas id="canvas3d"></canvas> -->
+                <img src="/mnk.svg" alt="monkmedia.io" class="absolute w-32">
+                <video src="https://ik.imagekit.io/talib/webvideo%20(1).mp4?tr=orig&updatedAt=1716298763022" autoplay muted loop class="w-full object-cover h-full"></video>
             </div>
         </div>
     </main>

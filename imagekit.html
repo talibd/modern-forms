@@ -6,53 +6,82 @@
     <title>Image Upload Form</title>
 </head>
 <body>
-    <h1>Image Upload</h1>
-    <form id="uploadForm" onsubmit="upload(event)">
-        <label for="file1">Select image:</label>
-        <input type="file" id="file1" name="file1" accept="image/*" required>
-        <br>
-        <button type="submit">Upload</button>
+    <form onsubmit="upload()">
+        <input type="file" id="file1" />
+        <input type="submit" />
     </form>
-<script src="https://unpkg.com/imagekit-javascript@1.3.0/dist/imagekit.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/imagekit-javascript/dist/imagekit.min.js"></script>
+    
     <script>
-        // Replace with your actual ImageKit public key
-        const publicKey = "public_sH4G6YEBaBA5/+lI1o/foVexPYI=";
-        const urlEndpoint = "https://ik.imagekit.io/talib/"; // Replace with your ImageKit ID
-
-        function upload(event) {
-            event.preventDefault();
-
-            const file = document.getElementById("file1").files[0];
-            const fileName = "abc1.jpg"; 
-            const tags = ["tag1"]; 
-
-            const imagekit = new ImageKit({
-                publicKey: publicKey,
-                urlEndpoint: urlEndpoint,
-                authenticationEndpoint:"https://forms-me.netlify.app/auth",
-            });
-
+        /*  
+        SDK initialization
+        */
+        var imagekit = new ImageKit({
+            publicKey: "public_sH4G6YEBaBA5/+lI1o/foVexPYI=",
+            urlEndpoint: "https://ik.imagekit.io/talib",
+        });
+        
+        // Upload function internally uses the ImageKit.io javascript SDK
+        function upload(data) {
+            var file = document.getElementById("file1");
+    
+            // Using Callback Function
             imagekit.upload({
-                file: file,
-                fileName: fileName,
-                tags: tags
-            }, function (err, result) {
-                if (err) {
-                    console.error(err);
-                    alert("Upload failed!");
-                    return;
+                file: file.files[0],
+                fileName: "abc1.jpg",
+                tags: ["tag1"],
+                token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
+                signature: 'whsec_frjgTqgQKetKlfyOQu1lcQpirF5XrvwU',
+                expire: '1653223280',
+                extensions: [
+                    {
+                        name: "aws-auto-tagging",
+                        minConfidence: 80,
+                        maxTags: 10
+                    }
+                ],
+                transformation: {
+                    pre: 'l-text,i-Imagekit,fs-50,l-end',
+                    post: [
+                        {
+                            type: 'transformation',
+                            value: 'w-100'
+                        }
+                    ]
                 }
-
-                const imageUrl = imagekit.url({
-                    src: result.url,
-                    transformation: [{ height: 300, width: 400 }]
-                });
-
-                console.log("Uploaded image URL:", imageUrl);
-                // You can display the uploaded image here using the imageUrl
-                // For example:
-                // document.getElementById("uploadedImage").src = imageUrl;
-            });
+            }, function(err, result) {
+                console.log(result);
+            })
+    
+            // Using Promises
+            imagekit.upload({
+                file: file.files[0],
+                fileName: "abc1.jpg",
+                tags: ["tag1"],
+                token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
+                signature: 'whsec_frjgTqgQKetKlfyOQu1lcQpirF5XrvwU',
+                expire: '1653223280',
+                extensions: [
+                    {
+                        name: "aws-auto-tagging",
+                        minConfidence: 80,
+                        maxTags: 10
+                    }
+                ],
+                transformation: {
+                    pre: 'l-text,i-Imagekit,fs-50,l-end',
+                    post: [
+                        {
+                            type: 'transformation',
+                            value: 'w-100'
+                        }
+                    ]
+                }
+            }).then(result => {
+                console.log(result);
+            }).then(error => {
+                console.log(error);
+            })
         }
     </script>
 </body>
