@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload Form</title>
+</head>
+<body>
+    <form onsubmit="upload()">
+        <input type="file" id="file1" />
+        <input type="submit" />
+    </form>
+    <script type="text/javascript" src="https://unpkg.com/imagekit-javascript/dist/imagekit.min.js"></script>
+    
+    <script>
+        /*  
+        SDK initialization
+        */
+        var imagekit = new ImageKit({
+            publicKey: "public_sH4G6YEBaBA5/+lI1o/foVexPYI=",
+            urlEndpoint: "https://ik.imagekit.io/talib",
+        });
+        
+        // Upload function internally uses the ImageKit.io javascript SDK
+        function upload(data) {
+            var file = document.getElementById("file1");
+    
+            // Using Callback Function
+            imagekit.upload({
+                file: file.files[0],
+                fileName: "abc1.jpg",
+                tags: ["tag1"],
+                token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
+                signature: 'whsec_frjgTqgQKetKlfyOQu1lcQpirF5XrvwU',
+                expire: '1653223280',
+                extensions: [
+                    {
+                        name: "aws-auto-tagging",
+                        minConfidence: 80,
+                        maxTags: 10
+                    }
+                ],
+                transformation: {
+                    pre: 'l-text,i-Imagekit,fs-50,l-end',
+                    post: [
+                        {
+                            type: 'transformation',
+                            value: 'w-100'
+                        }
+                    ]
+                }
+            }, function(err, result) {
+                console.log(result);
+            })
+    
+            // Using Promises
+            imagekit.upload({
+                file: file.files[0],
+                fileName: "abc1.jpg",
+                tags: ["tag1"],
+                token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
+                signature: 'whsec_frjgTqgQKetKlfyOQu1lcQpirF5XrvwU',
+                expire: '1653223280',
+                extensions: [
+                    {
+                        name: "aws-auto-tagging",
+                        minConfidence: 80,
+                        maxTags: 10
+                    }
+                ],
+                transformation: {
+                    pre: 'l-text,i-Imagekit,fs-50,l-end',
+                    post: [
+                        {
+                            type: 'transformation',
+                            value: 'w-100'
+                        }
+                    ]
+                }
+            }).then(result => {
+                console.log(result);
+            }).then(error => {
+                console.log(error);
+            })
+        }
+    </script>
+</body>
+</html>
